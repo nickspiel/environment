@@ -1,0 +1,11 @@
+alias l="ls -la"       # List in long format, include dotfiles
+alias ld="ls -ld */"   # List in long format, only directories
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cdp="cd ~/Projects"
+alias cdlui="cd ~/Projects/listing-ui/project"
+alias olui="code ~/Projects/listing-ui"
+alias myrcaprodssh="ssh bastion-prod -Nf -L 3306:myrcadb.rca-prod.realestate.com.au:3306"
+alias myrcastgssh="ssh bastion-prod -Nf -L 3306:myrcadb.rca-prod.realestate.com.au:3306"
+alias op="cd ~/Projects/"
