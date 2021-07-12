@@ -1,0 +1,39 @@
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until this script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Menu bar: show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent YES
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# No bouncing icons
+defaults write com.apple.dock no-bouncing -bool true
+
+# Only use UTF-8 in Terminal.app
+defaults write com.apple.terminal StringEncodings -array 4
+
+# Termnial Appearance
+defaults write com.apple.terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
+defaults write com.apple.Terminal ShowLineMarks -int 0
+
+# Kill affected applications 
+for app in "Dock" "Finder" "SystemUIServer"; do
+  killall "${app}" &> /dev/null
+done

@@ -1,1 +1,0 @@
-/Users/nick.spiel/.zprezto/runcoms/zshrc
