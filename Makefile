@@ -16,7 +16,7 @@ ifndef GITHUB_ACTION
 	@while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 endif
 
-core: brew git npm ohmyzsh
+core: brew git npm shell
 
 packages: brew-packages cask-apps node-packages
 
@@ -32,7 +32,6 @@ npm:
 	
 shell:
 	@if ! [ -d $(HOME)/.oh-my-zsh ]; then sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended; zsh; fi
-	git clone --recursive https://github.com/sorin-ionescu/prezto.git "${HOME}/.zprezto"
 
 stow: brew
 	@is-executable stow || brew install stow
