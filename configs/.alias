@@ -1,3 +1,7 @@
+# General
+
+## Navigation
+
 alias l="ls -la"       # List in long format, include dotfiles
 alias ld="ls -ld */"   # List in long format, only directories
 alias ..="cd .."
@@ -7,8 +11,25 @@ alias cdp="cd ~/Projects"
 alias cdlui="cd ~/Projects/listing-ui/project"
 alias olui="code ~/Projects/listing-ui"
 alias op="cd ~/Projects/"
+alias lah="ls -lah"
 
-alias myrcaprodssh="rea-as okta rca-prod-ReadWrite -- ./fargate-bastion subnet-08d1157f subnet-09d1157e --tunnel '3306:myrcadb.rca-prod.realestate.com.au:3306'"
-alias myrcastgssh="rea-as okta rca-stg-ReadWrite -- ./fargate-bastion subnet-77489712 subnet-6b48970e --tunnel '3306:myrcadb.rca-prod.realestate.com.au:3306'"
-alias newsstgssg="rea-as okta rca-stg-ReadWrite -- ./fargate-bastion subnet-77489712 subnet-6b48970e --tunnel '3306:db-news.rca-stg.realestate.com.au:3306'"
-alias newsprodssh="rea-as okta rca-prod-ReadWrite -- ./fargate-bastion subnet-08d1157f subnet-09d1157e --tunnel '3306:db-news.rca-prod.realestate.com.au:3306'"
+# REA
+
+## AWS helpers
+
+### Account logins
+
+alias as-awsstg='rea-as okta rca-stg-ReadWrite'
+alias as-awsprod='rea-as okta rca-prod-ReadWrite'
+alias awsstg='export $(rea-as okta rca-stg-ReadWrite)'
+alias awsprod='export $(rea-as okta rca-prod-ReadWrite)'
+
+### MyComemrcial DB
+
+alias myrcastgssh="as-awsstg -- ./fargate-bastion subnet-77489712 subnet-6b48970e --tunnel '3306:myrcadb.rca-prod.realestate.com.au:3306'"
+alias myrcaprodssh="as-awsprod -- ./fargate-bastion subnet-08d1157f subnet-09d1157e --tunnel '3306:myrcadb.rca-prod.realestate.com.au:3306'"
+
+### New Wordpress DB
+
+alias newsstgssh="as-awsstg -- ./fargate-bastion subnet-77489712 subnet-6b48970e --tunnel '3306:db-news.rca-stg.realestate.com.au:3306'"
+alias newsprodssh="as-awsprod -- ./fargate-bastion subnet-08d1157f subnet-09d1157e --tunnel '3306:db-news.rca-prod.realestate.com.au:3306'"
